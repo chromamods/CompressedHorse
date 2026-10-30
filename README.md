@@ -23,4 +23,5 @@ dotnet build -c Release
 The zip is written to `dist/`.
 
 ## License
-Copyright (C) 2026 ChromaMods. Licensed under [GPL-3.0-or-later](LICENSE).
+Copyright (C) 2026 ChromaMods. Released under the [GNU GPL v3](LICENSE): you are free to use,
+modify and share it, as long as you credit ChromaMods and share your changes under the same license.
