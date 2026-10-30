@@ -1,0 +1,4 @@
+{
+  "config.pass-through.name": "Walk through parked horses",
+  "config.pass-through.tooltip": "Players pass through horses nobody is riding instead of being blocked by them."
+}

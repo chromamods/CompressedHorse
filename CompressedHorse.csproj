@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <EnableHarmony>true</EnableHarmony>
+    <ModZipPath>$(MSBuildProjectDirectory)\dist</ModZipPath>
+    <!-- Installed through Vortex from the release zip, so the build must not copy into Mods. -->
+    <EnableModDeploy>false</EnableModDeploy>
+    <IgnoreModFilePaths>icon.png</IgnoreModFilePaths>
+    <!-- Keeps the local build path out of the DLL. -->
+    <PathMap>$(MSBuildProjectDirectory)=CompressedHorse</PathMap>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Pathoschild.Stardew.ModBuildConfig" Version="4.4.0" />
+  </ItemGroup>
+
+</Project>
