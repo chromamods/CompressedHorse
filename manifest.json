@@ -2,7 +2,7 @@
   "$schema": "https://smapi.io/schemas/manifest.json",
   "Name": "Compressed Horse",
   "Author": "ChromaMods",
-  "Version": "1.0.0",
+  "Version": "1.0.1",
   "Description": "Slims the ridden horse's hitbox to the farmer's width so it fits through one-tile gaps. Optionally lets players walk through parked horses.",
   "UniqueID": "ChromaMods.CompressedHorse",
   "EntryDll": "CompressedHorse.dll",

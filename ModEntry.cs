@@ -13,6 +13,8 @@ internal sealed class ModEntry : Mod
     /// <summary>The farmer's own hitbox width in pixels, so the ridden horse fits wherever the farmer does.</summary>
     private const int RiddenWidth = 48;
 
+    private const string PassThroughKey = "ChromaMods.CompressedHorse/PlayersPassThroughHorses";
+
     private ModConfig config = null!;
     private bool passThroughApplied;
 
@@ -53,7 +55,15 @@ internal sealed class ModEntry : Mod
     {
         if (!Context.IsWorldReady)
             return;
-        if (config.PlayersPassThroughHorses)
+        // Collision is checked on each player's own client, so the host's setting is shared through the
+        // host farmer's modData (synced to farmhands) to make it apply to everyone.
+        string hostValue = config.PlayersPassThroughHorses ? "true" : "false";
+        if (Context.IsMainPlayer && (!Game1.player.modData.TryGetValue(PassThroughKey, out string? current) || current != hostValue))
+            Game1.player.modData[PassThroughKey] = hostValue;
+        bool passThrough = Context.IsMainPlayer
+            ? config.PlayersPassThroughHorses
+            : Game1.MasterPlayer.modData.TryGetValue(PassThroughKey, out string? shared) && shared == "true";
+        if (passThrough)
         {
             // Vanilla clears farmerPassesThrough on mount, dismount and after a push, so it is reasserted every tick.
             foreach (NPC npc in Game1.currentLocation.characters)
